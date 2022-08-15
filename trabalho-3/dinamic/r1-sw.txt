@@ -1,38 +1,51 @@
-hostname r2
+hostname r1
 !
 vrf definition v1
  exit
 !
+router rip4 1
+ vrf v1
+ redistribute connected
+ exit
+!
+router rip6 1
+ vrf v1
+ redistribute connected
+ exit
+!
 interface ethernet1
- description r2 --> r1
+ description r1 --> r2
  vrf forwarding v1
- ipv4 address 25.20.1.2 255.255.255.252
- ipv6 address 2020:25:1::2 ffff:ffff:ffff:ffff::
+ ipv4 address 25.20.1.1 255.255.255.252
+ ipv6 address 2020:25:1::1 ffff:ffff:ffff:ffff::
+ router rip4 1 enable
+ router rip6 1 enable
  no shutdown
  no log-link-change
  exit
 !
 interface ethernet2
- description r2 --> r3
+ description r1 --> r4
  vrf forwarding v1
  ipv4 address 25.20.2.1 255.255.255.252
  ipv6 address 2020:25:2::1 ffff:ffff:ffff:ffff::
+ router rip4 1 enable
+ router rip6 1 enable
  no shutdown
  no log-link-change
  exit
 !
 interface ethernet3
- description r2 --> r4
+ description r1 --> r3
  vrf forwarding v1
  ipv4 address 25.20.3.1 255.255.255.252
  ipv6 address 2020:25:3::1 ffff:ffff:ffff:ffff::
+ router rip4 1 enable
+ router rip6 1 enable
  no shutdown
  no log-link-change
  exit
 !
-ipv4 route v1 25.20.4.0 255.255.255.252 25.20.3.2
-!
-ipv6 route v1 2020:25:4:: ffff:ffff:ffff:ffff:: 2020:25:3::2
 !
 !
 server telnet tel
