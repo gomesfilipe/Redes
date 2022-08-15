@@ -1,0 +1,20 @@
+## COMANDOS IMPORTANTES ##
+
+# Ver tabela de roteamento. S=static, C=connected, LOC=local
+show ipv4 route v1
+show ipv6 route v1
+
+# Ping
+ping 25.20.1.2 /vrf v1
+ping 25.20.1.2 vrf v1 (no wsl)
+
+# Sair do roteador
+exit
+
+# Acessar um roteador numa porta
+telnet localhost 4423
+
+# Derrubar enlace
+conf 
+interface eth1
+shutdown
