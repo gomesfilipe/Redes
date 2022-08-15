@@ -3,17 +3,17 @@ hostname r4
 vrf definition v1
  exit
 !
-router ospf4 1
+router ospf4 10
  vrf v1
- router-id 0.0.0.0
+ router-id 1.1.1.4
  traffeng-id 0.0.0.0
  area 0 enable
  redistribute connected
  exit
 !
-router ospf6 1
+router ospf6 10
  vrf v1
- router-id ::
+ router-id 2.2.2.4
  traffeng-id ::
  area 0 enable
  redistribute connected
@@ -24,10 +24,10 @@ interface ethernet1
  vrf forwarding v1
  ipv4 address 25.20.5.2 255.255.255.252
  ipv6 address 2020:25:5::2 ffff:ffff:ffff:ffff::
- router ospf4 1 enable
- router ospf4 1 area 0
- router ospf6 1 enable
- router ospf6 1 area 0
+ router ospf4 10 enable
+ router ospf4 10 area 0
+ router ospf6 10 enable
+ router ospf6 10 area 0
  no shutdown
  no log-link-change
  exit
@@ -37,10 +37,10 @@ interface ethernet2
  vrf forwarding v1
  ipv4 address 25.20.2.2 255.255.255.252
  ipv6 address 2020:25:2::2 ffff:ffff:ffff:ffff::
- router ospf4 1 enable
- router ospf4 1 area 0
- router ospf6 1 enable
- router ospf6 1 area 0
+ router ospf4 10 enable
+ router ospf4 10 area 0
+ router ospf6 10 enable
+ router ospf6 10 area 0
  no shutdown
  no log-link-change
  exit
@@ -50,10 +50,10 @@ interface ethernet3
  vrf forwarding v1
  ipv4 address 25.20.6.2 255.255.255.252
  ipv6 address 2020:25:6::2 ffff:ffff:ffff:ffff::
- router ospf4 1 enable
- router ospf4 1 area 0
- router ospf6 1 enable
- router ospf6 1 area 0
+ router ospf4 10 enable
+ router ospf4 10 area 0
+ router ospf6 10 enable
+ router ospf6 10 area 0
  no shutdown
  no log-link-change
  exit
