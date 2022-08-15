@@ -18,3 +18,9 @@ telnet localhost 4423
 conf 
 interface eth1
 shutdown
+
+# Script
+./script.sh
+
+# Encerrar
+./stop.sh
